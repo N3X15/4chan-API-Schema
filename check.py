@@ -1,7 +1,8 @@
 import os
 import sys
 import json
-from jsonschema import Draft4Validator
+
+from jsonschema import Draft4Validator, RefResolver
 
 
 class Colors:
@@ -23,6 +24,10 @@ def console_write(msg, color=None):
   if color and IsTTY:
     sys.stdout.write(Colors.ENDC)
 
+
+def buildPath(seq):
+  return '/'.join([str(x) for x in error.absolute_path])
+
 API_VERSIONS = {
     'v1.0': [
         'catalog.json_schema',
@@ -31,13 +36,17 @@ API_VERSIONS = {
     ]
 }
 
+TESTS = {
+    'v1.0': {
+        'catalog': [
+            'test-catalog-vg'
+        ]
+    }
+}
+
 IsTTY = sys.stdout.isatty()
 if sys.platform.startswith('win'):
-  #print('Is Windows :( - Disabling colors.')
   IsTTY = False
-#else:
-#  print('Is not Windows.')
-print('%s a TTY.' % ('Is' if IsTTY else 'Is not'))
 
 for version, files in API_VERSIONS.items():
   for filename in files:
@@ -54,3 +63,41 @@ for version, files in API_VERSIONS.items():
         console_write('FAIL', Colors.FAIL)
         print('')
         print(repr(o))
+        sys.exit(1)
+
+for version, files in TESTS.items():
+  for filename, tests in files.items():
+    schema_path = os.path.join(version, filename + '.json_schema')
+    for test in tests:
+      test_path = os.path.join('tests', filename, test + '.json')
+      console_write('Running test {}... '.format(test))
+
+      schema = None
+      with open(schema_path, 'r') as f:
+        schema_data = json.load(f)
+        rootdir = 'file:///' + os.path.abspath(version).replace('\\', '/') + '/'
+        #print('Initializing schema {} from {}'.format(filename, rootdir))
+        resolver = RefResolver(rootdir, None)
+        schema = Draft4Validator(schema_data, resolver=resolver)
+
+      test_data = None
+      with open(test_path, 'r') as f:
+        test_data = json.load(f)
+        if not isinstance(test_data, (list, dict)):
+          print('test_data = ' + test_data.__class__.__name__)
+
+      firstError = True
+      lastCtx = None
+      for error in schema.iter_errors(test_data):
+        if firstError:
+          console_write("FAIL", Colors.FAIL)
+          firstError = False
+          print('')
+        ctx = '{}#/{}'.format(test_path, buildPath(error.absolute_path))
+        if ctx != lastCtx:
+          print('  In {}:'.format(ctx))
+          lastCtx = ctx
+        print('    E: {}#/{} - {}'.format(error.schema['id'], '/'.join(error.schema_path), error.message.strip()))
+        # print(error.validator_value)
+      if firstError:
+        console_write('OK!', Colors.OKGREEN)

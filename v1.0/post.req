@@ -46,7 +46,7 @@ required:
   - now
   - time
   - tim # Someone missed this on the spec.
-  - country_name # This one, too.
+  #- country_name # This one, too.
   - custom_spoiler
-  - last_modified
+  #- last_modified # And this one.
   - semantic_url

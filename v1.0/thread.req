@@ -44,7 +44,8 @@ required:
   - resto
   - now
   - time
-  - country_name
+  # WHY UPDATE THE DOCUMENTATION WHEN YOU CAN HAVE SOMEONE DO IT FOR YOU?
+  #- country_name
   - tim
-  - custom_spoiler
-  - last_modified
+  #- custom_spoiler
+  #- last_modified

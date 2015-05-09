@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://api.4chan.org/v1.0/catalog-schema#",
+  "id": "catalog-schema#",
   "title": "Board Catalog",
   "description": "Describes the current state of a board on 4chan.",
   "type": "array",
@@ -10,12 +10,10 @@
     "required": ["page", "threads"],
     "properties": {
       "page": {
-        "id": "page",
         "type": "number",
         "minimum": 0
       },
       "threads": {
-        "id": "threads",
         "type": "array",
         "items": {
           "$ref": "thread.json_schema#"
