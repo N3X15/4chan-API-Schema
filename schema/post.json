@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://api.4chan.org/v1.0/post.json_schema#",
+  "id": "post-entity#",
   "title": "Post Object",
   "description": "A post (non-OP).",
   "type": "object",

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "http://api.4chan.org/v1.0/thread.json_schema",
-  "title": "Thread",
+  "id": "thread-entity#",
+  "title": "Thread entity",
   "description": "A post which also describes information about the thread it spearheads.",
   "type": "object",
   "required": [

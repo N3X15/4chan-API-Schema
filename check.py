@@ -29,15 +29,15 @@ def buildPath(seq):
   return '/'.join([str(x) for x in error.absolute_path])
 
 API_VERSIONS = {
-    'v1.0': [
-        'catalog.json_schema',
-        'post.json_schema',
-        'thread.json_schema',
+    'schema': [
+        'catalog.json',
+        'post.json',
+        'thread.json',
     ]
 }
 
 TESTS = {
-    'v1.0': {
+    'schema': {
         'catalog': [
             'test-catalog-vg'
         ]
@@ -67,7 +67,7 @@ for version, files in API_VERSIONS.items():
 
 for version, files in TESTS.items():
   for filename, tests in files.items():
-    schema_path = os.path.join(version, filename + '.json_schema')
+    schema_path = os.path.join(version, filename + '.json')
     for test in tests:
       test_path = os.path.join('tests', filename, test + '.json')
       console_write('Running test {}... '.format(test))

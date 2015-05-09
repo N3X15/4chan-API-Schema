@@ -16,7 +16,7 @@
       "threads": {
         "type": "array",
         "items": {
-          "$ref": "thread.json_schema#"
+          "$ref": "thread.json#"
         }
       }
     }
