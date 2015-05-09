@@ -1,0 +1,52 @@
+# Requirements file for the post entity.
+# Based off of https://github.com/4chan/4chan-API
+all:
+  - 'no'
+  - resto
+  #- sticky
+  #- closed
+  #- archived
+  - now
+  - time
+  - name
+  - trip
+  - id
+  - capcode
+  - country
+  - country_name
+  - sub
+  - com
+  - tim
+  # File stuff
+  - filename
+  - ext
+  - fsize
+  - md5
+  - h
+  - w
+  - tn_w
+  - tn_h
+  - filedeleted
+  - spoiler #???
+  - custom_spoiler
+  #- omitted_posts
+  #- omitted_images
+  #- replies
+  #- images
+  #- bumplimit
+  #- imagelimit
+  - capcode_replies
+  - last_modified
+  - tag
+  #- semantic_url
+
+required:
+  - 'no'
+  - resto
+  - now
+  - time
+  - tim # Someone missed this on the spec.
+  - country_name # This one, too.
+  - custom_spoiler
+  - last_modified
+  - semantic_url
