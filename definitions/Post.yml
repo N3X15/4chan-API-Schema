@@ -1,0 +1,194 @@
+title: Post
+description: A post as seen in a catalog endpoint.
+type: object
+required:
+- 'no'
+- time
+- last_modified
+- resto
+properties:
+  'no':
+    type: integer
+    example: 9001
+    description: Number of this post in each board. NOT unique globally.
+  resto:
+    type: integer
+    example: 0
+    description: Reply To
+  sticky:
+    type: integer
+    example: 1
+    description: Stickied thread
+  closed:
+    type: integer
+    example: 1
+    description: Locked thread
+  archived:
+    type: integer
+    example: 1
+    description: Archived thread
+  archived_on:
+    type: integer
+    example: 1344571233
+    description: UNIX timestamp of when the thread was archived.
+  now:
+    type: string
+    example: 08/08/12(Wed)01:11
+    description: MM/DD/YY(Day)HH:MM (:SS on some boards), EST/EDT timezone
+  time:
+    type: integer
+    example: 1344570123
+    description: UNIX timestamp
+  name:
+    type: string
+    example: moot
+    description: Name of the user
+  trip:
+    type: string
+    example: "!Ep8pui8Vw2"
+    description: 'text (format: !tripcode!!securetripcode)'
+  id:
+    type: string
+    example: Admin
+    description: ID
+
+  capcode:
+    type: string
+    example: admin
+    description: Capcode
+
+  country:
+    type: string
+    example: XX
+    description: Country code
+
+  country_name:
+    type: string
+    example: Unknown
+    description: Country name
+
+  sub:
+    type: string
+    example: This is a subject
+    description: Subject
+
+  com:
+    type: string
+    example: This is a comment
+    description: Comment
+
+  tim:
+    type: integer
+    example: 1344402680740
+    description: Renamed filename
+
+  filename:
+    type: string
+    example: OPisa
+    description: Original filename
+
+  ext:
+    type: string
+    example: .jpg
+    description: File extension
+
+  fsize:
+    type: integer
+    example: 2500
+    description: File size
+
+  md5:
+    type: string
+    example: NOetrLVnES3jUn1x5ZPVAg==
+    description: File MD5
+
+  w:
+    type: integer
+    example: 500
+    description: Image width
+
+  h:
+    type: integer
+    example: 500
+    description: Image height
+
+  tn_w:
+    type: integer
+    example: 250
+    description: Thumbnail width
+
+  tn_h:
+    type: integer
+    example: 250
+    description: Thumbnail height
+
+  filedeleted:
+    type: integer
+    example: 0
+    description: File deleted?
+
+  spoiler:
+    type: integer
+    example: 0
+    description: Spoiler image?
+
+  custom_spoiler:
+    type: integer
+    example: 3
+    description: Custom spoilers?
+
+  omitted_posts:
+    type: integer
+    example: 33
+    description: replies omitted
+
+  omitted_images:
+    type: integer
+    example: 21
+    description: image replies omitted
+
+  replies:
+    type: integer
+    example: 231
+    description: replies total
+
+  images:
+    type: integer
+    example: 132
+    description: images total
+
+  bumplimit:
+    type: integer
+    example: 0
+    description: Bump limit met?
+
+  imagelimit:
+    type: integer
+    example: 1
+    description: Image limit met?
+
+  capcode_replies:
+    type: object
+    additionalProperties: true
+    example: {"admin":[1234,1267]}
+    description: Capcode user replies
+
+  last_modified:
+    type: integer
+    example: 1344571233
+    description: Time when last modified
+
+  tag:
+    type: string
+    example: Loop
+    description: Thread tag
+
+  semantic_url:
+    type: string
+    example: daily-programming-thread
+    description: Thread URL slug
+
+  since4pass:
+    type: integer
+    example: 2016
+    description: Year 4chan Pass bought

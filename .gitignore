@@ -1,2 +1,5 @@
 /v1.0/*.fix.json_schema
 *.bak
+/node_modules
+/tmp
+/.build

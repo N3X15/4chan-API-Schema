@@ -1,0 +1,1 @@
+{"title": "Catalog Entry", "description": "A simple object that just contains the first and last post of the thread.", "type": "object", "required": ["posts"], "properties": {"posts": {"type": "array", "items": {"$ref": "../definitions/Post.yml"}}}}
